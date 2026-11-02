@@ -1,0 +1,125 @@
+/* ==========================================================================
+   sidebar.css — Sidebar Navigation, Brand Icon & Nav Links
+   ========================================================================== */
+
+.sidebar {
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  padding: var(--space-6) var(--space-5);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.sidebar__brand {
+  margin-bottom: var(--space-6);
+  padding: 0 var(--space-2);
+}
+
+.sidebar__logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: #fff;
+  transition: opacity var(--dur-fast), transform var(--dur-fast);
+}
+
+.sidebar__logo-link:hover {
+  opacity: 0.92;
+  transform: scale(1.02);
+  text-decoration: none;
+}
+
+.sidebar__brand-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 40%, var(--yellow-500) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dynamic Black & White Listenify Brand Icon */
+.listenify-brand-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+/* Light Mode: Black background, White bars */
+:root,
+:root[data-theme="light"] {
+  --logo-bg: #141211;
+  --logo-bars: #ffffff;
+}
+
+/* Dark Mode: White background, Black bars */
+:root[data-theme="dark"] {
+  --logo-bg: #ffffff;
+  --logo-bars: #141211;
+}
+
+.listenify-brand-icon__bg {
+  fill: var(--logo-bg);
+  transition: fill var(--dur-base) var(--ease);
+}
+
+.listenify-brand-icon__bars rect {
+  fill: var(--logo-bars);
+  transition: fill var(--dur-base) var(--ease);
+}
+
+.sidebar__dots span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.sidebar__dots span:nth-child(2) {
+  background: #febc2e;
+}
+
+.sidebar__dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.sidebar__title {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-medium);
+  color: #fff;
+  margin: var(--space-6) 0 var(--space-3) var(--space-3);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 10px var(--space-5);
+  margin-bottom: 2px;
+  border: 0;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  color: var(--text-sidebar);
+  font-size: var(--fs-base);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-base) var(--ease), color var(--dur-base) var(--ease);
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-item.is-active,
+.nav-item[aria-current="page"] {
+  background: rgba(0, 0, 0, 0.32);
+  color: var(--text-sidebar-active);
+  font-weight: var(--fw-medium);
+}

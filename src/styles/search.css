@@ -1,0 +1,189 @@
+/* ==========================================================================
+   search.css — Search Dropdown Menu, Results Cards, Highlighting & States
+   ========================================================================== */
+
+/* Search Dropdown Card - Responsive & Themed */
+.search-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(440px, 94vw);
+  max-height: min(480px, 68vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.28), 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+  animation: dropdownFadeScale 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes dropdownFadeScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.search-dropdown__empty {
+  padding: var(--space-4) var(--space-3);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}
+
+.search-dropdown__section {
+  padding: 4px 6px;
+}
+
+.search-dropdown__section + .search-dropdown__section {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.search-dropdown__section-title {
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 8px 4px;
+}
+
+.search-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background var(--dur-fast), transform var(--dur-fast);
+  width: 100%;
+}
+
+.search-dropdown__item:hover,
+.search-dropdown__item:focus-visible {
+  background: var(--bg-surface-3);
+}
+
+.search-dropdown__thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface-2);
+}
+
+.search-dropdown__thumb--round {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.search-dropdown__meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.search-dropdown__title {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-dropdown__subtitle {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-dropdown__play-icon {
+  color: var(--brand);
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: transform var(--dur-fast), opacity var(--dur-fast);
+}
+
+.search-dropdown__item:hover .search-dropdown__play-icon {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.search-dropdown__badge {
+  font-size: 11px;
+  font-weight: var(--fw-medium);
+  color: var(--text-muted);
+  background: var(--bg-surface-2);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  flex-shrink: 0;
+}
+
+.search-dropdown__footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 4px 6px 2px;
+}
+
+.search-dropdown__view-all {
+  width: 100%;
+  padding: 10px 8px;
+  background: transparent;
+  border: none;
+  color: var(--brand);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  text-align: center;
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.search-dropdown__view-all:hover {
+  background: var(--bg-surface-3);
+  text-decoration: underline;
+}
+
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.topbar__search--desktop {
+  display: block;
+}
+
+.topbar__search-toggle--mobile {
+  display: none;
+}
+
+.topbar__mobile-search-dropdown {
+  display: none;
+}
+
+.topbar .tab {
+  white-space: nowrap;
+}

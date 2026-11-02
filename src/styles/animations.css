@@ -1,0 +1,10 @@
+/* ==========================================================================
+   animations.css — Keyframe Animations, View Transitions & Ripple Effects
+   ========================================================================== */
+
+/* View transition circular ripple effect */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}

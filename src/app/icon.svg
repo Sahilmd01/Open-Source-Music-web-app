@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <!-- Rounded squircle background: dark black #141211 -->
+  <rect width="512" height="512" rx="128" fill="#141211" />
+  <!-- Waveform visualizer bars: crisp clean white #ffffff -->
+  <rect x="110" y="201" width="46" height="110" rx="23" fill="#ffffff" />
+  <rect x="192" y="128" width="46" height="256" rx="23" fill="#ffffff" />
+  <rect x="274" y="91" width="46" height="330" rx="23" fill="#ffffff" />
+  <rect x="356" y="174" width="46" height="164" rx="23" fill="#ffffff" />
+</svg>

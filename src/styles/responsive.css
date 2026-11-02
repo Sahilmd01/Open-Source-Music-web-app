@@ -1,0 +1,1403 @@
+/* ==========================================================================
+   responsive.css — Responsive Breakpoints, Tablet Adjustments & Mobile Layouts
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   17. RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .now-playing {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --sidebar-w: 0px;
+  }
+
+  .app {
+    padding: 0;
+    padding-bottom: calc(var(--player-h) + var(--space-8) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .window {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    padding: var(--space-4);
+  }
+
+  .hero {
+    padding: var(--space-6);
+    min-height: 220px;
+  }
+
+  .track {
+    grid-template-columns: 48px 1fr auto 32px;
+  }
+
+  .track> :nth-child(3) {
+    display: none;
+  }
+
+  .player {
+    gap: var(--space-2);
+    padding: 0 var(--space-3);
+    width: calc(100% - var(--space-4));
+    max-width: 500px;
+    bottom: calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .toast-region {
+    top: auto;
+    bottom: calc(var(--player-h) + var(--space-8) + env(safe-area-inset-bottom, 0px));
+    right: var(--space-4);
+  }
+}
+
+
+/* Tablet: hide volume slider */
+@media (max-width: 1100px) {
+  .topbar .search {
+    width: 180px;
+  }
+
+  .player__volume {
+    display: none;
+  }
+}
+
+/* Mobile: off-canvas sidebar */
+@media (max-width: 760px) {
+  .window {
+    min-height: 100vh;
+    padding-left: 0;
+  }
+
+  .topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4) !important;
+    margin: calc(-1 * var(--space-4)) calc(-1 * var(--space-4)) 0 !important;
+    gap: var(--space-2);
+    min-height: 56px;
+  }
+
+  .topbar__left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .topbar__brand-title {
+    display: none;
+  }
+
+  .topbar__menu {
+    display: inline-grid;
+    flex-shrink: 0;
+  }
+
+  .topbar__crumbs {
+    display: none;
+  }
+
+  .topbar__center {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+
+  .topbar__search--desktop,
+  .topbar__search-wrapper {
+    display: none;
+  }
+
+  .topbar__search-toggle--mobile {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .topbar__search-toggle--mobile .btn-icon,
+  .topbar__menu {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .topbar__search-toggle--mobile .btn-icon.is-active {
+    background: var(--bg-surface-3);
+    color: var(--brand);
+  }
+
+  /* Search icon a bit bigger, Close X icon stays small */
+  .topbar__search-toggle--mobile .btn-icon .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .topbar__search-toggle--mobile .btn-icon .close-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  /* Search bar appears directly below the navbar only in mobile */
+  .topbar__mobile-search-dropdown {
+    display: block;
+    width: 100%;
+    flex-basis: 100%;
+    padding-top: var(--space-3);
+    margin-top: var(--space-1);
+    border-top: 1px solid var(--border-subtle);
+    animation: mobileSearchSlide 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes mobileSearchSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .topbar__mobile-search-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    background: var(--bg-surface-2);
+    border-radius: var(--radius-pill);
+    padding: 2px var(--space-3);
+    border: 1px solid var(--border-default);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  }
+
+  .topbar__mobile-search-inner:focus-within {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px var(--brand-glow), 0 4px 16px rgba(0, 0, 0, 0.16);
+  }
+
+  .topbar__mobile-search-input {
+    flex: 1;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    height: 38px !important;
+    font-size: var(--fs-sm) !important;
+    color: var(--text-primary);
+    outline: none !important;
+    padding: 0 !important;
+  }
+
+  .topbar__mobile-search-input::-webkit-search-cancel-button,
+  .topbar__mobile-search-input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
+  /* Search dropdown card adjustments specifically for mobile */
+  .search-dropdown-menu--mobile {
+    position: static;
+    transform: none;
+    width: 100%;
+    margin-top: var(--space-2);
+    max-height: 55vh;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    animation: mobileSearchDropdownSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes mobileSearchDropdownSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .topbar__tabs {
+    flex-shrink: 0;
+  }
+
+  .topbar__tabs .tab {
+    padding: 6px 12px;
+    font-size: var(--fs-xs);
+  }
+
+  .topbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .topbar__actions .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .topbar__auth {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .topbar__auth .btn {
+    padding: 0 10px !important;
+    font-size: 0.76rem !important;
+    min-height: 30px !important;
+    height: 30px !important;
+  }
+
+  .sidebar {
+    display: block;
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 280px;
+    z-index: var(--z-modal);
+    transform: translateX(-100%);
+    transition: transform var(--dur-slow) var(--ease);
+    overflow-y: auto;
+  }
+
+  .sidebar.is-open {
+    transform: none;
+  }
+
+  .sidebar-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: var(--bg-overlay);
+    z-index: calc(var(--z-modal) - 1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-base);
+  }
+
+  .sidebar-scrim.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .player {
+    padding: 7px var(--space-3) 5px;
+    gap: var(--space-2);
+    /* 62px provides clean vertical breathing room so the progress bar never collides with buttons */
+    height: 62px;
+    overflow: hidden;
+    position: fixed;
+    touch-action: pan-y;
+    will-change: transform;
+    align-items: center;
+  }
+
+  /* Mobile progress / seek bar — sleek track with responsive touch drag */
+  .player__mobile-progress {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 20px;
+    right: 20px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    /* touch-action none allows pure horizontal drag scrubbing without browser interception */
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Generous touch target area (padding top and bottom) */
+    padding: 6px 0 10px;
+    margin-top: -6px;
+    background-clip: content-box;
+    box-sizing: content-box;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 10;
+  }
+
+  .player__mobile-progress:focus-visible {
+    outline: 2px solid var(--accent, #fbff7a);
+    outline-offset: 2px;
+  }
+
+  .player__mobile-progress-fill {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 4px;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(90deg, #f6ff52 0%, #fbff7a 100%);
+    box-shadow: 0 0 10px rgba(251, 255, 122, 0.7);
+    pointer-events: none;
+    will-change: width;
+    transition: width 0.1s linear;
+  }
+
+  /* Scrubber thumb handle */
+  .player__mobile-progress-thumb {
+    position: absolute;
+    top: 4px;
+    width: 8px;
+    height: 8px;
+    margin-left: -4px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5), 0 0 8px rgba(251, 255, 122, 0.9);
+    pointer-events: none;
+    opacity: 0.95;
+    transition: transform var(--dur-fast), opacity var(--dur-fast);
+  }
+
+  .player__mobile-progress:active .player__mobile-progress-thumb {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+
+  .player__track {
+    min-width: 0;
+    flex-shrink: 0;
+  }
+
+  .player .track__cover {
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .player__meta,
+  .player .wave,
+  .player__extras {
+    display: none;
+  }
+
+  .player__time {
+    display: inline-flex !important;
+    align-items: center;
+    font-size: 0.72rem !important;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    margin-left: 2px;
+    flex-shrink: 0;
+  }
+
+  .player__time-current,
+  .player__time-total {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    display: inline-block;
+    min-width: 4ch;
+    text-align: center;
+  }
+
+  .player__time-sep {
+    opacity: 0.5;
+    margin: 0 1px;
+    flex-shrink: 0;
+  }
+
+  .player__time-total {
+    opacity: 0.7;
+  }
+
+  .player__controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px !important;
+  }
+
+  .player__controls .btn-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
+    transition: transform var(--dur-fast), background var(--dur-fast);
+  }
+
+  .player__controls .btn-icon:active {
+    transform: scale(0.92);
+  }
+
+  .player__controls .btn-play {
+    width: 40px !important;
+    height: 40px !important;
+    box-shadow: 0 4px 18px rgba(251, 255, 122, 0.45);
+    transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+  }
+
+  .player__controls .btn-play:active {
+    transform: scale(0.93);
+  }
+
+  /* Dynamic cover-blended mobile player bar */
+  .player {
+    position: fixed;
+    height: 62px;
+    overflow: hidden;
+    padding: 7px var(--space-3) 5px;
+    gap: var(--space-2);
+    align-items: center;
+    border-radius: var(--radius-pill);
+    z-index: var(--z-player);
+    isolation: isolate;
+  }
+
+  /* Seamless ambient blurred artwork background layer */
+  .player::before {
+    content: "";
+    position: absolute;
+    inset: -30px;
+    background-image: var(--cover-art-url, none);
+    background-size: cover;
+    background-position: left center;
+    filter: blur(28px) saturate(160%) brightness(1.1);
+    transform: scale(1.3);
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.95;
+    transition: background-image 0.4s ease, opacity 0.3s ease;
+  }
+
+  /* Responsive cover blend overlay for Light Mode */
+  [data-theme="light"] .player,
+  :root:not([data-theme="dark"]) .player {
+    background-color: hsla(var(--track-hue, 30), 45%, 94%, 0.82);
+    color: var(--ink-900, #141211);
+    border: 1px solid hsla(var(--track-hue, 30), 40%, 80%, 0.45);
+    box-shadow: 0 12px 36px hsla(var(--track-hue, 30), 40%, 25%, 0.16),
+                0 2px 10px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+  }
+
+  /* Soft light tint layer over the blurred cover to keep icons readable */
+  [data-theme="light"] .player::after,
+  :root:not([data-theme="dark"]) .player::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      hsla(var(--track-hue, 30), 55%, 96%, 0.25) 0%,
+      rgba(255, 255, 255, 0.6) 25%,
+      rgba(255, 255, 255, 0.75) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Make the song cover visually fuse into the player bar without harsh borders */
+  .player .track__cover {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 4px 16px hsla(var(--track-hue, 30), 50%, 20%, 0.35) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  [data-theme="light"] .player__mobile-progress,
+  :root:not([data-theme="dark"]) .player__mobile-progress {
+    background: hsla(var(--track-hue, 30), 30%, 30%, 0.14);
+  }
+
+  [data-theme="light"] .player__time,
+  :root:not([data-theme="dark"]) .player__time {
+    color: hsla(var(--track-hue, 30), 35%, 22%, 0.85);
+    font-weight: var(--fw-medium);
+  }
+
+  [data-theme="light"] .player__controls .btn-icon,
+  :root:not([data-theme="dark"]) .player__controls .btn-icon {
+    color: hsla(var(--track-hue, 30), 45%, 15%, 0.9);
+  }
+
+  [data-theme="light"] .player__controls .btn-icon:hover,
+  :root:not([data-theme="dark"]) .player__controls .btn-icon:hover {
+    background: hsla(var(--track-hue, 30), 40%, 40%, 0.1);
+  }
+
+  /* Dark mode mobile player bar theme */
+  [data-theme="dark"] .player {
+    background-color: hsla(var(--track-hue, 30), 25%, 10%, 0.86);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+
+  [data-theme="dark"] .player::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      90deg,
+      hsla(var(--track-hue, 30), 30%, 12%, 0.3) 0%,
+      rgba(15, 14, 13, 0.65) 30%,
+      rgba(15, 14, 13, 0.82) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .track {
+    grid-template-columns: 48px 1fr auto;
+  }
+
+  .track__artist,
+  .track__time {
+    display: none;
+  }
+
+  .hero__art {
+    opacity: 0.4;
+  }
+
+  .now-playing {
+    display: none !important;
+  }
+
+  /* Responsive Trending Playlists & Albums grids */
+  .media-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: var(--space-3) !important;
+    scrollbar-width: none !important;
+  }
+
+  .media-grid--playlists > .media-item,
+  .media-grid--albums > .media-item {
+    flex: 0 0 160px !important;
+    width: 160px !important;
+  }
+
+  .media-grid--playlists {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .media-grid--albums {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  /* Artists Grid — responsive for mobile */
+  .media-grid--artists {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    gap: var(--space-4) !important;
+  }
+
+  /* In mobile: show the 6th playlist */
+  .media-item--mobile-only {
+    display: block !important;
+  }
+
+  /* In mobile: hide the 5th album to keep exactly 4 albums */
+  .media-item--desktop-only {
+    display: none !important;
+  }
+
+  /* Responsive Popular Artists — single scrollable horizontal row */
+  .grid-artists {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: var(--space-4) !important;
+    padding-bottom: var(--space-2) !important;
+    margin-right: calc(-1 * var(--space-4)) !important;
+    padding-right: var(--space-4) !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .grid-artists::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .grid-artists>li {
+    flex: 0 0 96px !important;
+    width: 96px !important;
+  }
+
+  .grid-artists .artist-card__avatar-wrap {
+    width: 88px !important;
+    height: 88px !important;
+    max-width: 88px !important;
+  }
+
+  /* Responsive Songs Table (Popular songs & Recently played) */
+  .song-table-header {
+    grid-template-columns: 24px 36px 1fr 30px 30px 42px 28px !important;
+    padding: 6px 8px !important;
+    gap: var(--space-2) !important;
+  }
+
+  .song-table-header [data-col="artist"],
+  .song-table-header [data-col="album"],
+  .song-table-header [data-col="uploader"] {
+    display: none !important;
+  }
+
+  .song-table-header [data-col="add"],
+  .song-table-header [data-col="like"] {
+    display: flex !important;
+  }
+
+  .song-table-row {
+    grid-template-columns: 24px 36px 1fr 30px 30px 42px 28px !important;
+    padding: 6px 8px !important;
+    gap: var(--space-2) !important;
+  }
+
+  .song-table-row .col-artist,
+  .song-table-row .col-album,
+  .song-table-row .col-uploader {
+    display: none !important;
+  }
+
+  .song-table-row .col-add,
+  .song-table-row .col-like {
+    display: flex !important;
+  }
+
+  /* Ensure both add and fav (like) icons are visible without hover on mobile touchscreens */
+  .song-table-row .col-add .btn-icon,
+  .song-table-row .col-like .btn-icon {
+    opacity: 1 !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .song-table-row .col-like .btn-icon {
+    color: var(--text-muted);
+  }
+
+  .song-table-row .col-like .btn-icon svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .song-table-row .col-add .btn-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .song-table-row .col-cover {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .col-title__mobile-artist {
+    display: block !important;
+  }
+
+  /* Responsive page-header and toolbar for /albums and other pages */
+  .page-header {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__content {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .page-header__title {
+    font-size: 1.65rem !important;
+  }
+
+  .page-header p,
+  .page-header__desc {
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .page-header__action {
+    width: 100%;
+  }
+
+  .page-header__action .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* /albums, /playlists, /artists, and /favorites controls toolbar responsive */
+  .albums-toolbar,
+  .playlists-toolbar,
+  .artists-toolbar,
+  .favorites-toolbar {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: var(--space-3) !important;
+    margin-bottom: var(--space-4) !important;
+  }
+
+  .albums-toolbar .segmented,
+  .playlists-toolbar .segmented,
+  .artists-toolbar .segmented,
+  .favorites-toolbar .segmented {
+    width: 100%;
+    display: flex;
+  }
+
+  .albums-toolbar .segmented button,
+  .playlists-toolbar .segmented button,
+  .artists-toolbar .segmented button,
+  .favorites-toolbar .segmented button {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .albums-toolbar__search,
+  .playlists-toolbar__search,
+  .artists-toolbar__search,
+  .favorites-toolbar__search {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  /* Album, Playlist, Artist Detail Page Header & Songs Banner Mobile Responsive - Sleek Compact Banner */
+  .album-detail-header,
+  .playlist-detail-header,
+  .artist-detail-header,
+  .songs-banner {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    padding: var(--space-3) var(--space-3) !important;
+    gap: var(--space-3) !important;
+    min-height: auto !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  .album-detail-header__cover,
+  .playlist-detail-header__cover,
+  .artist-detail-header__cover,
+  .songs-banner__cover {
+    width: 80px !important;
+    height: 80px !important;
+    min-width: 80px !important;
+    border-radius: var(--radius-sm) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .album-detail-header__info,
+  .playlist-detail-header__info,
+  .artist-detail-header__info,
+  .songs-banner__info,
+  .album-detail-header > div:last-child,
+  .playlist-detail-header > div:last-child,
+  .artist-detail-header > div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    gap: 2px !important;
+  }
+
+  .album-detail-header__tag,
+  .playlist-detail-header__tag,
+  .artist-detail-header__tag,
+  .songs-banner__tag {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .album-detail-header h1,
+  .playlist-detail-header h1,
+  .artist-detail-header h1,
+  .songs-banner h1 {
+    font-size: 1.15rem !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+
+  .album-detail-header p,
+  .playlist-detail-header p,
+  .artist-detail-header p,
+  .songs-banner p {
+    font-size: var(--fs-xs) !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .album-detail-header > div:last-child > div:last-child,
+  .playlist-detail-header > div:last-child > div:last-child,
+  .artist-detail-header > div:last-child > div:last-child,
+  .songs-banner > div:last-child > div:last-child {
+    justify-content: flex-start !important;
+    margin-top: 2px !important;
+    gap: var(--space-2) !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+  }
+
+  .album-detail-controls,
+  .playlist-detail-controls,
+  .artist-detail-controls,
+  .songs-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-3) !important;
+  }
+
+  .album-detail-controls__actions,
+  .playlist-detail-controls__actions,
+  .artist-detail-controls__actions,
+  .songs-controls__left {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-2) !important;
+    width: 100% !important;
+    align-items: center !important;
+  }
+
+  .album-detail-controls__actions .btn,
+  .playlist-detail-controls__actions .btn,
+  .artist-detail-controls__actions .btn,
+  .songs-controls__add-btn {
+    flex: 1 1 auto !important;
+    min-width: 120px !important;
+    justify-content: center !important;
+  }
+
+  .songs-controls__tabs {
+    flex: 1 1 100% !important;
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .songs-controls__tabs button {
+    flex: 1 !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .album-detail-controls__search,
+  .playlist-detail-controls__search,
+  .artist-detail-controls__search,
+  .songs-controls__search {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  /* Settings Page Mobile Responsive - Compact Half-Height Banner */
+  .settings-hero {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    padding: var(--space-3) var(--space-4) !important;
+    gap: var(--space-3) !important;
+    min-height: 72px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .settings-hero__icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: var(--radius-sm) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .settings-hero__icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .settings-hero__content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: auto !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    gap: 1px !important;
+  }
+
+  .settings-hero__content span {
+    font-size: 0.6rem !important;
+    padding: 1px 6px !important;
+  }
+
+  .settings-hero__content h1 {
+    font-size: 1.15rem !important;
+    margin: 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  .settings-hero__content p {
+    display: none !important;
+  }
+
+  .settings-tabs {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-3) !important;
+  }
+
+  .settings-tabs__segmented {
+    width: 100% !important;
+    display: flex !important;
+  }
+
+  .settings-tabs__segmented button {
+    flex: 1 !important;
+    padding: 8px 6px !important;
+    font-size: var(--fs-xs) !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .settings-tabs__reset-btn {
+    display: none !important;
+  }
+
+  /* Profile Page Mobile Responsive */
+  .profile-hero__banner {
+    height: 120px !important;
+  }
+
+  .profile-hero__strip {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: var(--space-3) var(--space-4) var(--space-4) !important;
+    gap: var(--space-3) !important;
+  }
+
+  .profile-hero__user {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: var(--space-2) !important;
+    width: 100% !important;
+  }
+
+  .profile-hero__avatar {
+    margin-top: -46px !important;
+  }
+
+  .profile-hero__avatar img {
+    width: 76px !important;
+    height: 76px !important;
+    border-width: 3px !important;
+  }
+
+  .profile-hero__info {
+    align-items: center !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .profile-hero__info > div {
+    justify-content: center !important;
+  }
+
+  .profile-hero__stats {
+    width: 100% !important;
+    justify-content: space-around !important;
+    padding: var(--space-2) var(--space-3) !important;
+    box-sizing: border-box !important;
+  }
+
+  .profile-tabs {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-2) !important;
+  }
+
+  .profile-tabs__segmented {
+    width: 100% !important;
+    display: flex !important;
+  }
+
+  .profile-tabs__segmented button {
+    flex: 1 !important;
+    padding: 8px 4px !important;
+    font-size: var(--fs-xs) !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .profile-tabs__logout-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 38px !important;
+  }
+
+  /* Notifications Page Mobile Responsive */
+  .notif-hero {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    padding: var(--space-3) var(--space-4) !important;
+    gap: var(--space-3) !important;
+    min-height: 72px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .notif-hero__icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: var(--radius-sm) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .notif-hero__icon svg {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .notif-hero__content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: auto !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    gap: 1px !important;
+  }
+
+  .notif-hero__content h1 {
+    font-size: 1.15rem !important;
+    margin: 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  .notif-hero__content p {
+    display: none !important;
+  }
+
+  .notif-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-2) !important;
+  }
+
+  .notif-controls__left {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-2) !important;
+  }
+
+  .notif-controls__tabs {
+    width: 100% !important;
+    display: flex !important;
+  }
+
+  .notif-controls__tabs button {
+    flex: 1 !important;
+    padding: 8px 4px !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .notif-controls__mark-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .notif-controls__search {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+
+  .notif-item {
+    padding: 10px 10px !important;
+    gap: var(--space-2) !important;
+    align-items: flex-start !important;
+  }
+
+  .notif-item__top {
+    gap: 4px !important;
+  }
+
+  .notif-item__desc {
+    white-space: normal !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .notif-item__action {
+    display: none !important;
+  }
+
+  .notif-item__controls {
+    align-self: flex-start !important;
+  }
+
+  /* Hide timestamp on mobile — compresses space */
+  .notif-item__time-badge {
+    display: none !important;
+  }
+
+  /* New Releases Page Mobile Responsive */
+  .new-hero {
+    flex-direction: row !important;
+    align-items: center !important;
+    text-align: left !important;
+    padding: var(--space-3) var(--space-4) !important;
+    gap: var(--space-3) !important;
+    min-height: 72px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .new-hero__cover {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: var(--radius-sm) !important;
+    flex-shrink: 0 !important;
+  }
+
+  .new-hero__content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: auto !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    gap: 1px !important;
+  }
+
+  .new-hero__badge {
+    font-size: 0.6rem !important;
+    padding: 1px 6px !important;
+  }
+
+  .new-hero__title {
+    font-size: 1.15rem !important;
+    margin: 0 !important;
+    line-height: 1.15 !important;
+  }
+
+  .new-hero__desc {
+    display: none !important;
+  }
+
+  .new-hero__meta {
+    font-size: 0.68rem !important;
+    gap: var(--space-2) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .new-controls {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: var(--space-2) !important;
+  }
+
+  .new-controls__left {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+  }
+
+  .new-controls__tabs {
+    flex: 1 !important;
+    display: flex !important;
+    width: 100% !important;
+  }
+
+  .new-controls__tabs button {
+    flex: 1 !important;
+    padding: 8px 4px !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .new-controls__search {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
+}
+
+.col-title__mobile-artist {
+  display: none;
+}
+
+/* Tablet adjustments (761px - 1100px) */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .media-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: var(--space-4) !important;
+    scrollbar-width: none !important;
+  }
+
+  .media-grid--playlists > .media-item,
+  .media-grid--albums > .media-item {
+    flex: 0 0 180px !important;
+    width: 180px !important;
+  }
+
+  /* Artists Grid — responsive for tablet */
+  .media-grid--artists {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    gap: var(--space-4) !important;
+  }
+
+  .grid-artists {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: var(--space-4) !important;
+    padding-bottom: var(--space-2) !important;
+    margin-right: calc(-1 * var(--space-4)) !important;
+    padding-right: var(--space-4) !important;
+    scrollbar-width: none !important;
+  }
+
+  .grid-artists > li {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+  }
+
+  .grid-artists .artist-card__avatar-wrap {
+    width: 110px !important;
+    height: 110px !important;
+    max-width: 110px !important;
+  }
+
+  .song-table-header {
+    grid-template-columns: 32px 40px 1.5fr 1fr 36px 36px 45px 28px !important;
+  }
+
+  .song-table-header [data-col="album"],
+  .song-table-header [data-col="uploader"] {
+    display: none !important;
+  }
+
+  .song-table-row {
+    grid-template-columns: 32px 40px 1.5fr 1fr 36px 36px 45px 28px !important;
+  }
+
+  .song-table-row .col-album,
+  .song-table-row .col-uploader {
+    display: none !important;
+  }
+}
+
+
+/* Tablet & Mobile Breakpoints for Control Center */
+@media (max-width: 860px) {
+  .control-nav-bar {
+    gap: var(--space-3);
+  }
+  
+  .control-segmented-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .control-segmented-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .segmented button {
+    padding: 6px 12px !important;
+    font-size: var(--fs-xs) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   18. ACCESSIBILITY
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+
+  .btn,
+  .input,
+  .card {
+    border: 1px solid CanvasText;
+  }
+}

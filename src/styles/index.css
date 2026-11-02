@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Listenify Main Entry Stylesheet — index.css
+   Aggregates modular CSS layers in proper cascade order.
+   Optimized into a unified production stylesheet during build.
+   ========================================================================== */
+
+/* 1. Design Tokens & CSS Variables */
+@import "./variables.css";
+
+/* 2. CSS Reset & Base Normalization */
+@import "./reset.css";
+
+/* 3. Typography, Base Accessibility & Core Utilities */
+@import "./global.css";
+
+/* 4. Structural Layout & Shell Containers */
+@import "./layout.css";
+
+/* 5. Navigation Sidebar & Brand Icon */
+@import "./sidebar.css";
+
+/* 6. Topbar & Header Navigation */
+@import "./header.css";
+
+/* 7. Search Input & Search Results Dropdown */
+@import "./search.css";
+
+/* 8. Home Page, Hero Carousel & Media Grids */
+@import "./home.css";
+
+/* 9. Playlists, Songs, Track Lists & Cards */
+@import "./playlist.css";
+
+/* 10. Albums Grid & Collection Pages */
+@import "./album.css";
+
+/* 11. Music Player Bar & Now Playing Panel */
+@import "./player.css";
+
+/* 12. UI Components (Buttons, Forms, Badges, Modals, etc.) */
+@import "./components.css";
+
+/* 13. Keyframe Animations & View Transitions */
+@import "./animations.css";
+
+/* 14. Responsive Layouts & Breakpoint Adjustments */
+@import "./responsive.css";

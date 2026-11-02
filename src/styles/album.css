@@ -1,0 +1,33 @@
+/* ==========================================================================
+   album.css — Albums Grid, Responsive Wrapping Cards & Control Page Grids
+   ========================================================================== */
+
+/* Albums page: wrapping grid layout with consistent card sizes */
+.albums-page .media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  flex-wrap: wrap;
+  overflow-x: visible;
+  gap: var(--space-4);
+}
+
+.albums-page .media-card {
+  width: 100%;
+}
+
+
+/* Control page albums: compact grid (5 per row) */
+.control-albums-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+  overflow-x: visible;
+}
+
+/* Control page playlists: compact grid (5 per row) */
+.control-playlists-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-4);
+  overflow-x: visible;
+}

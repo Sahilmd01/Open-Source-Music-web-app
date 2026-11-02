@@ -1,0 +1,363 @@
+/* ==========================================================================
+   Music App Design System — index.css
+   Font: Poppins | Brand: Burnt Orange + Lemon Yellow
+   Themes: light (default) · dark · auto (follows OS unless data-theme is set)
+   Usage:  <html data-theme="light|dark">  (omit attribute for auto)
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. TOKENS — primitives (theme independent)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand — burnt orange */
+  --orange-100: #f7e4d9;
+  --orange-200: #eec3aa;
+  --orange-300: #e0976d;
+  --orange-400: #d07a4a;
+  --orange-500: #be5c2b;
+  /* primary brand */
+  --orange-600: #a04c22;
+  --orange-700: #823d1b;
+  --orange-800: #5f2c13;
+
+  /* Accent — lemon yellow */
+  --yellow-300: #fdffb0;
+  --yellow-400: #fcff94;
+  --yellow-500: #fbff7a;
+  /* accent */
+  --yellow-600: #eef260;
+  --yellow-700: #d6da45;
+
+  /* Neutrals (warm) */
+  --ink-900: #141211;
+  --ink-800: #1f1f1f;
+  /* design "dark" swatch */
+  --ink-700: #2a2724;
+  --ink-600: #3a3633;
+  --ink-500: #5a5555;
+  /* sidebar / player grey */
+  --ink-400: #8a847f;
+  --ink-300: #b8b2ad;
+  --ink-200: #dcd8d4;
+  --ink-100: #f2f2f2;
+  /* design "light" swatch */
+  --ink-50: #fafafa;
+  --white: #ffffff;
+
+  /* Status primitives */
+  --green-400: #4cc38a;
+  --green-500: #2e9e6b;
+  --green-600: #237a52;
+  --red-400: #ff6b6b;
+  --red-500: #d64545;
+  --red-600: #b02f2f;
+  --amber-400: #f5b83d;
+  --amber-500: #e8a317;
+  --amber-600: #b87d0a;
+  --blue-400: #6ea8fe;
+  --blue-500: #3b82f6;
+  --blue-600: #2563c9;
+
+  /* Typography */
+  --font-sans: var(--font-poppins), "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 0.6875rem;
+  /* 11px */
+  --fs-sm: 0.8125rem;
+  /* 13px */
+  --fs-base: 0.9375rem;
+  /* 15px */
+  --fs-md: 1.0625rem;
+  /* 17px */
+  --fs-lg: 1.25rem;
+  /* 20px */
+  --fs-xl: 1.5rem;
+  /* 24px */
+  --fs-2xl: 1.875rem;
+  /* 30px */
+  --fs-3xl: 2.375rem;
+  /* 38px */
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.6;
+
+  /* Spacing */
+  --space-1: 3px;
+  --space-2: 6px;
+  --space-3: 10px;
+  --space-4: 14px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-8: 24px;
+  --space-10: 32px;
+  --space-12: 40px;
+  --space-16: 52px;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  /* Layout */
+  --sidebar-w: 220px;
+  --rightpanel-w: 300px;
+  --player-h: 68px;
+
+  /* Z-index */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-player: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+}
+
+/* --------------------------------------------------------------------------
+   2. TOKENS — semantic, LIGHT theme (default)
+   -------------------------------------------------------------------------- */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg-app: linear-gradient(135deg, #d9cfcb 0%, #c9bcb7 45%, #a89a94 100%);
+  --bg-page: var(--white);
+  --bg-surface: var(--white);
+  --bg-surface-2: var(--ink-100);
+  /* now-playing panel, inputs */
+  --bg-surface-3: #e8e6e4;
+  --bg-overlay: rgba(20, 18, 17, 0.5);
+  --bg-sidebar: var(--ink-500);
+  --bg-player: rgba(90, 85, 85, 0.92);
+
+  /* Text */
+  --text-primary: var(--ink-800);
+  --text-secondary: #5f5a56;
+  --text-muted: #8a847f;
+  --text-disabled: #b8b2ad;
+  --text-inverse: var(--ink-100);
+  --text-on-brand: #ffffff;
+  --text-on-accent: var(--ink-800);
+  --text-sidebar: #d9d4d0;
+  --text-sidebar-active: var(--yellow-500);
+
+  /* Borders */
+  --border-subtle: #ececea;
+  --border-default: #dcd8d4;
+  --border-strong: #b8b2ad;
+  --border-focus: var(--orange-500);
+
+  /* Brand + accent */
+  --brand: var(--orange-500);
+  --brand-hover: var(--orange-600);
+  --brand-active: var(--orange-700);
+  --brand-soft: var(--orange-100);
+  --accent: var(--yellow-500);
+  --accent-hover: var(--yellow-600);
+  --accent-active: var(--yellow-700);
+  --accent-soft: #fdffd6;
+
+  /* Status */
+  --success: var(--green-500);
+  --success-hover: var(--green-600);
+  --success-soft: #e3f5ec;
+  --success-border: #a9dcc3;
+  --success-text: #1b5e40;
+
+  --error: var(--red-500);
+  --error-hover: var(--red-600);
+  --error-soft: #fbe9e9;
+  --error-border: #f0b5b5;
+  --error-text: #8c2222;
+
+  --warning: var(--amber-500);
+  --warning-hover: var(--amber-600);
+  --warning-soft: #fdf3dc;
+  --warning-border: #f1d28c;
+  --warning-text: #7a5206;
+
+  --info: var(--blue-500);
+  --info-hover: var(--blue-600);
+  --info-soft: #e5eefe;
+  --info-border: #b5cdf8;
+  --info-text: #1b4590;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(31, 31, 31, 0.08);
+  --shadow-md: 0 6px 16px rgba(31, 31, 31, 0.1);
+  --shadow-lg: 0 18px 40px rgba(31, 31, 31, 0.16);
+  --shadow-brand: 0 18px 36px rgba(190, 92, 43, 0.35);
+  /* hero card glow */
+  --ring: 0 0 0 3px rgba(190, 92, 43, 0.35);
+
+  /* Hero gradient (curated playlist card) */
+  --hero-bg: linear-gradient(120deg, #c4602d 0%, #b0521f 55%, #8f3f14 100%);
+  --hero-text: #ffffff;
+
+  /* Waveform */
+  --wave-played: var(--yellow-500);
+  --wave-unplayed: rgba(255, 255, 255, 0.28);
+}
+
+/* --------------------------------------------------------------------------
+   3. TOKENS — DARK theme
+   Applied by [data-theme="dark"] or automatically via OS preference
+   when no explicit data-theme="light" is set.
+   -------------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-app: #000000;
+  --bg-page: #000000;
+  --bg-surface: #0a0a0a;
+  --bg-surface-2: #121212;
+  --bg-surface-3: #1c1c1c;
+  --bg-overlay: rgba(0, 0, 0, 0.85);
+  --bg-sidebar: #121212;
+  --bg-player: rgba(18, 18, 18, 0.95);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+  --text-disabled: #404040;
+  --text-inverse: #000000;
+  --text-on-brand: #ffffff;
+  --text-on-accent: #000000;
+  --text-sidebar: #a3a3a3;
+  --text-sidebar-active: var(--yellow-500);
+
+  --border-subtle: #171717;
+  --border-default: #262626;
+  --border-strong: #383838;
+  --border-focus: var(--yellow-500);
+
+  --brand: #d0693a;
+  --brand-hover: #de7d50;
+  --brand-active: #e99069;
+  --brand-soft: rgba(208, 105, 58, 0.18);
+  --accent: var(--yellow-500);
+  --accent-hover: var(--yellow-400);
+  --accent-active: var(--yellow-300);
+  --accent-soft: rgba(251, 255, 122, 0.12);
+
+  --success: var(--green-400);
+  --success-hover: #6fd3a1;
+  --success-soft: rgba(76, 195, 138, 0.14);
+  --success-border: rgba(76, 195, 138, 0.4);
+  --success-text: #8be0b5;
+
+  --error: var(--red-400);
+  --error-hover: #ff8888;
+  --error-soft: rgba(255, 107, 107, 0.14);
+  --error-border: rgba(255, 107, 107, 0.4);
+  --error-text: #ff9c9c;
+
+  --warning: var(--amber-400);
+  --warning-hover: #f8c862;
+  --warning-soft: rgba(245, 184, 61, 0.14);
+  --warning-border: rgba(245, 184, 61, 0.4);
+  --warning-text: #f8cf7c;
+
+  --info: var(--blue-400);
+  --info-hover: #8dbaff;
+  --info-soft: rgba(110, 168, 254, 0.14);
+  --info-border: rgba(110, 168, 254, 0.4);
+  --info-text: #a2c6ff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.6);
+  --shadow-brand: 0 18px 36px rgba(190, 92, 43, 0.28);
+  --ring: 0 0 0 3px rgba(251, 255, 122, 0.35);
+
+  --hero-bg: linear-gradient(120deg, #a84f22 0%, #8a3f17 55%, #66300f 100%);
+  --hero-text: #ffffff;
+
+  --wave-played: var(--yellow-500);
+  --wave-unplayed: rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --bg-app: #000000;
+    --bg-page: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-surface-2: #121212;
+    --bg-surface-3: #1c1c1c;
+    --bg-overlay: rgba(0, 0, 0, 0.85);
+    --bg-sidebar: #121212;
+    --bg-player: rgba(18, 18, 18, 0.95);
+
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-muted: #737373;
+    --text-disabled: #404040;
+    --text-inverse: #000000;
+    --text-sidebar: #a3a3a3;
+
+    --border-subtle: #171717;
+    --border-default: #262626;
+    --border-strong: #383838;
+    --border-focus: var(--yellow-500);
+
+    --brand: #d0693a;
+    --brand-hover: #de7d50;
+    --brand-active: #e99069;
+    --brand-soft: rgba(208, 105, 58, 0.18);
+    --accent-hover: var(--yellow-400);
+    --accent-active: var(--yellow-300);
+    --accent-soft: rgba(251, 255, 122, 0.12);
+
+    --success: var(--green-400);
+    --success-hover: #6fd3a1;
+    --success-soft: rgba(76, 195, 138, 0.14);
+    --success-border: rgba(76, 195, 138, 0.4);
+    --success-text: #8be0b5;
+
+    --error: var(--red-400);
+    --error-hover: #ff8888;
+    --error-soft: rgba(255, 107, 107, 0.14);
+    --error-border: rgba(255, 107, 107, 0.4);
+    --error-text: #ff9c9c;
+
+    --warning: var(--amber-400);
+    --warning-hover: #f8c862;
+    --warning-soft: rgba(245, 184, 61, 0.14);
+    --warning-border: rgba(245, 184, 61, 0.4);
+    --warning-text: #f8cf7c;
+
+    --info: var(--blue-400);
+    --info-hover: #8dbaff;
+    --info-soft: rgba(110, 168, 254, 0.14);
+    --info-border: rgba(110, 168, 254, 0.4);
+    --info-text: #a2c6ff;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 18px 40px rgba(0, 0, 0, 0.6);
+    --shadow-brand: 0 18px 36px rgba(190, 92, 43, 0.28);
+    --ring: 0 0 0 3px rgba(251, 255, 122, 0.35);
+
+    --hero-bg: linear-gradient(120deg, #a84f22 0%, #8a3f17 55%, #66300f 100%);
+    --wave-unplayed: rgba(255, 255, 255, 0.2);
+  }
+}

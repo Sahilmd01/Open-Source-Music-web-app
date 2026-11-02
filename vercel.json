@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "src/app/api/v1/storage/upload/route.ts": {
+      "maxDuration": 60,
+      "memory": 1024
+    },
+    "src/app/api/v1/storage/upload-ticket/route.ts": {
+      "maxDuration": 60,
+      "memory": 512
+    },
+    "src/app/api/control/songs/route.ts": {
+      "maxDuration": 60,
+      "memory": 512
+    },
+    "src/app/api/control/artists/route.ts": {
+      "maxDuration": 30,
+      "memory": 512
+    },
+    "src/app/api/control/playlists/route.ts": {
+      "maxDuration": 30,
+      "memory": 512
+    }
+  }
+}

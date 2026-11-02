@@ -1,0 +1,154 @@
+/* ==========================================================================
+   header.css — Topbar Navigation, Header Brand Links & Page Header
+   ========================================================================== */
+
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--bg-page);
+  padding: var(--space-5) var(--space-8);
+  margin: calc(-1 * var(--space-6)) calc(-1 * var(--space-8)) 0;
+  border-bottom: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.topbar__brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity var(--dur-fast), transform var(--dur-fast);
+}
+
+.topbar__brand-link:hover {
+  opacity: 0.88;
+  transform: scale(1.02);
+  text-decoration: none;
+}
+
+.topbar__brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--brand) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* Topbar */
+.topbar__menu {
+  display: none;
+}
+
+.topbar__crumbs {
+  flex: 0 0 auto;
+}
+
+.topbar__center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.topbar__auth {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: var(--space-2);
+}
+
+.topbar__search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  min-width: 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.topbar .search {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+}
+
+.topbar__search-input {
+  width: 100%;
+  height: 38px;
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  padding-left: 36px;
+  padding-right: 36px;
+  color: var(--text-primary);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast), background var(--dur-fast);
+}
+
+.topbar__search-input:focus {
+  border-color: var(--brand);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 3px var(--brand-glow);
+}
+
+.topbar__search-spinner {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+
+/* Page header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.page-header__content {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+.page-header__title {
+  margin: 0;
+  word-break: break-word;
+}
+
+.page-header p,
+.page-header__desc {
+  margin: var(--space-1) 0 0;
+  word-break: break-word;
+  max-width: 640px;
+  line-height: 1.45;
+}
+
+.page-header__action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}

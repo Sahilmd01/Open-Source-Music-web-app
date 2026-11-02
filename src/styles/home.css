@@ -1,0 +1,255 @@
+/* ==========================================================================
+   home.css — Home Carousel, Hero Card, Cover Art Placeholders & Media Grids
+   ========================================================================== */
+
+/* Cover art placeholders */
+.cover {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: var(--fw-semibold);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.cover--round {
+  border-radius: 50%;
+}
+
+.cover span {
+  font-size: 1.1em;
+  letter-spacing: 0.02em;
+}
+
+.artist__img.cover {
+  font-size: var(--fs-lg);
+}
+
+
+/* Hero & Carousel */
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
+.hero-carousel .hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #141210 !important;
+}
+
+.hero__art-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero__img-moving {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  animation: hero-img-slide-next 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero__img-moving--prev {
+  animation: hero-img-slide-prev 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(14, 12, 10, 0.94) 0%,
+    rgba(14, 12, 10, 0.78) 40%,
+    rgba(14, 12, 10, 0.35) 75%,
+    rgba(14, 12, 10, 0.05) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes hero-img-slide-next {
+  from {
+    opacity: 0.3;
+    transform: translateX(60px) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes hero-img-slide-prev {
+  from {
+    opacity: 0.3;
+    transform: translateX(-60px) scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.hero-carousel__dots {
+  position: absolute;
+  bottom: 14px;
+  right: 24px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.hero-carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  padding: 0;
+  transition: all var(--dur-base) var(--ease);
+}
+
+.hero-carousel__dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-carousel__dot.is-active {
+  width: 24px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+.hero__cta {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+}
+
+.hero > *:not(.hero__art):not(.hero__art-container):not(.hero__gradient) {
+  position: relative;
+  z-index: 3;
+}
+
+.hero__art {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 46%;
+  pointer-events: none;
+}
+
+.hero__disc {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  width: 360px;
+  height: 360px;
+  translate: 0 -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #1f1f1f 0 14%, #fbff7a 14% 17%, #2a1209 17% 40%, #3a1a0c 40% 41%, #2a1209 41% 62%, #3a1a0c 62% 63%, #2a1209 63% 100%);
+  opacity: 0.85;
+}
+
+.hero__disc--sm {
+  width: 150px;
+  height: 150px;
+  right: 180px;
+  top: 78%;
+  opacity: 0.35;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0 16%, transparent 17%), #fbff7a;
+  mix-blend-mode: soft-light;
+}
+
+
+/* Media grid & Artist grid — horizontal scrollable row */
+.media-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: var(--space-5);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.media-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.media-grid--playlists {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.media-grid--playlists > .media-item {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
+.media-grid--albums {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.media-grid--albums > .media-item {
+  flex: 0 0 200px;
+  width: 200px;
+}
+
+/* Artists Grid — vertical scroll, 5 per row, no horizontal scroll */
+.media-grid--artists {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-5);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.media-grid--artists > .media-card {
+  flex: 1;
+}
+
+
+/* Visibility helpers: On desktop, hide mobile-only items (playlist #6) */
+.media-item--mobile-only {
+  display: none !important;
+}
+
+.media-item--desktop-only {
+  display: block;
+}
+
+.media-card {
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--fs-xs);
+  width: 100%;
+}
+
+.media-card__cover {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-1);
+  object-fit: cover;
+}
+
+.media-card p {
+  margin: 0;
+}
