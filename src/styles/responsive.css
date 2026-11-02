@@ -277,6 +277,13 @@
     height: 30px !important;
   }
 
+  .topbar__star-link {
+    padding: 0 10px !important;
+    min-height: 30px !important;
+    height: 30px !important;
+    font-size: 0.76rem !important;
+  }
+
   .sidebar {
     display: block;
     position: fixed;

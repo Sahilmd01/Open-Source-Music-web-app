@@ -63,38 +63,20 @@ export function Sidebar() {
         <NavGroup title="Library" links={LIBRARY_NAV} pathname={pathname} onNavigate={close} />
         <NavGroup title="My music" links={visibleMyMusicNav} pathname={pathname} onNavigate={close} />
 
-        <div style={{ marginTop: "auto", paddingTop: "var(--space-4)", display: "flex", gap: "12px", alignItems: "center" }}>
-          <Link
-            href="/about"
-            onClick={close}
-            style={{
-              fontSize: "11px",
-              color: "var(--text-muted)",
-              textDecoration: "none",
-              opacity: 0.7,
-              transition: "opacity var(--dur-fast)",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-          >
-            About
-          </Link>
-          <span style={{ fontSize: "10px", color: "var(--border-default)" }}>•</span>
-          <Link
-            href="/terms"
-            onClick={close}
-            style={{
-              fontSize: "11px",
-              color: "var(--text-muted)",
-              textDecoration: "none",
-              opacity: 0.7,
-              transition: "opacity var(--dur-fast)",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-          >
-            Terms &amp; Policies
-          </Link>
+        <div className="sidebar__footer">
+          <nav className="sidebar__social-links" aria-label="Connect">
+            <a href="https://www.linkedin.com/in/codewithkinu" target="_blank" rel="noopener noreferrer">
+              LinkedIn <span>codewithkinu</span>
+            </a>
+            <a href="https://github.com/sahilmd01" target="_blank" rel="noopener noreferrer">
+              GitHub <span>sahilmd01</span>
+            </a>
+          </nav>
+          <div className="sidebar__legal-links">
+            <Link href="/about" onClick={close}>About</Link>
+            <span aria-hidden="true">•</span>
+            <Link href="/terms" onClick={close}>Terms &amp; Policies</Link>
+          </div>
         </div>
       </aside>
     </>

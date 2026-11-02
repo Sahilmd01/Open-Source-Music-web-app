@@ -341,6 +341,41 @@ export function Topbar() {
           </IconButton>
         </div>
 
+        <div className="topbar__star-group">
+          <a
+            href="https://github.com/Sahilmd01/Open-Source-Music-web-app"
+            className="topbar__star-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m8 1.75 1.94 3.93 4.34.63-3.14 3.06.74 4.32L8 11.65l-3.88 2.04.74-4.32-3.14-3.06 4.34-.63L8 1.75Z" />
+            </svg>
+            <span>Star</span>
+          </a>
+          <a
+            href="https://github.com/Sahilmd01/Open-Source-Music-web-app/stargazers"
+            className="topbar__star-count"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View GitHub stargazers"
+          >
+            <img
+              src="https://img.shields.io/github/stars/Sahilmd01/Open-Source-Music-web-app?style=flat&label="
+              alt="GitHub stars"
+            />
+          </a>
+        </div>
+
         <ThemeToggle />
 
         {isAuthenticated ? (
